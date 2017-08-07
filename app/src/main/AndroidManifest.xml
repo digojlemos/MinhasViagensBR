@@ -9,13 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity_pais">
+        <activity android:name=".activity_estado">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity_cidade">
+
+        </activity>
+        <activity android:name=".activity_viagem">
+
+        </activity>
+        <provider
+            android:authorities=".dados.ViagemProvider"
+            android:name="com.rlemos.minhasviagensbr.dados.ViagemProvider"
+            android:exported="false"  />
     </application>
+
 
 </manifest>
