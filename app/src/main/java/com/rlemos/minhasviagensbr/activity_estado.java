@@ -1,7 +1,13 @@
 package com.rlemos.minhasviagensbr;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ListView;
+
+import com.rlemos.minhasviagensbr.adapter.EstadoCursorAdapter;
+import com.rlemos.minhasviagensbr.dados.ViagemContract;
 
 /**
  * Created by rlemos on 07/08/17.
@@ -9,10 +15,29 @@ import android.support.v7.app.AppCompatActivity;
 
 public class activity_estado extends AppCompatActivity {
 
+        EstadoCursorAdapter cursorAdapter;
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.layout_estado);
+
+            ListView listEstado = (ListView) findViewById(R.id.listEstado);
+
+            View empty = null;
+            listEstado.setEmptyView(empty);
+
+            String[] projection = {
+                    ViagemContract.EntryEstado._ID,
+                    ViagemContract.EntryEstado.ESTADO,
+                    ViagemContract.EntryEstado.ESTADO_SIGLA};
+
+            Cursor c = getContentResolver().query(ViagemContract.EntryEstado.CONTENT_URI,projection,null,null,null);
+
+
+
+
+
         }
 
 

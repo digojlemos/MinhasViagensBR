@@ -1,6 +1,7 @@
 package com.rlemos.minhasviagensbr.dados;
 
 import android.provider.BaseColumns;
+import android.net.Uri;
 
 /**
  * Created by rlemos on 07/08/17.
@@ -8,27 +9,45 @@ import android.provider.BaseColumns;
 
 public class ViagemContract {
 
+    public static final String CONTENT_AUTHORITY = "com.rlemos.minhasviagensbr.dados.ViagemProvider";
+
+    public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
+
+    public static final String PATH_PAIS = "pais";
+    public static final String PATH_ESTADO = "estado";
+    public static final String PATH_CIDADE = "cidade";
+
 
     public static final class EntryPais implements BaseColumns{
+
+        public static final Uri CONTENT_URI = Uri.withAppendedPath(BASE_CONTENT_URI, PATH_PAIS);
 
         public final static String TABLE_NAME = "pais";
 
         public final static String ID_PAIS = BaseColumns._ID;
 
+        public final static String PAIS_SIGLA = "pais_sigla";
+
+        public final static String PAIS_ABREV = "pais_abrev";
+
         public final static String PAIS = "pais";
 
         public final static String PAIS_ENABLED = "pais_enabled";
 
-        public final static String PAIS_ULT_VIAGEM = "pais_ult_viagem";
+        public final static String PAIS_ULT_VIAGEM = "pais_last_date";
 
     }
 
     //Campos específicos da tabela Estado
     public static final class EntryEstado implements BaseColumns{
 
+        public static final Uri CONTENT_URI = Uri.withAppendedPath(BASE_CONTENT_URI, PATH_ESTADO);
+
         public final static String TABLE_NAME = "estado";
 
         public final static String ID_ESTADO = BaseColumns._ID;
+
+        public final static String ESTADO = "estado";
 
         public final static  String ID_PAIS = "id_pais";
 
@@ -42,6 +61,8 @@ public class ViagemContract {
 
     //Campos específicos da tabela Viagem
     public static final class EntryCidade implements BaseColumns{
+
+        public static final Uri CONTENT_URI = Uri.withAppendedPath(BASE_CONTENT_URI, PATH_CIDADE);
 
         public final static String TABLE_NAME = "cidade";
 
