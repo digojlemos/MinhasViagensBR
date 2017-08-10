@@ -57,6 +57,7 @@ public class activity_estado extends AppCompatActivity implements
                 EntryEstado.ESTADO_SIGLA };
         String selection = EntryEstado.ESTADO_ENABLED + "=?";
         String[] selectionArgs = new String[] { "0" };
+        String order = EntryEstado.ESTADO_ULT_VIAGEM+" DESC";
 
         // This loader will execute the ContentProvider's query method on a background thread
         return new CursorLoader(this,   // Parent activity context
@@ -64,7 +65,7 @@ public class activity_estado extends AppCompatActivity implements
                 projection,             // Columns to include in the resulting Cursor
                 selection,                   // No selection clause
                 selectionArgs,                   // No selection arguments
-                null); // Default sort order
+                order); // Default sort order
     }
 
     @Override
