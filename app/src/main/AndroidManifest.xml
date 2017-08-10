@@ -23,8 +23,8 @@
 
         </activity>
         <provider
-            android:authorities=".dados.ViagemProvider"
-            android:name="com.rlemos.minhasviagensbr.dados.ViagemProvider"
+            android:authorities="com.rlemos.minhasviagensbr.viagemProvider"
+            android:name=".dados.ViagemProvider"
             android:exported="false"  />
     </application>
 

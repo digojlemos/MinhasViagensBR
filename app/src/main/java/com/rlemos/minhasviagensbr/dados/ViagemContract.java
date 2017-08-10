@@ -9,13 +9,16 @@ import android.net.Uri;
 
 public class ViagemContract {
 
-    public static final String CONTENT_AUTHORITY = "com.rlemos.minhasviagensbr.dados.ViagemProvider";
+    public static final String CONTENT_AUTHORITY = "com.rlemos.minhasviagensbr.viagemProvider";
 
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
     public static final String PATH_PAIS = "pais";
     public static final String PATH_ESTADO = "estado";
     public static final String PATH_CIDADE = "cidade";
+    public static final String PATH_PAISES = "paises";
+    public static final String PATH_ESTADOS = "estados";
+    public static final String PATH_CIDADES = "cidades";
 
 
     public static final class EntryPais implements BaseColumns{
@@ -41,7 +44,8 @@ public class ViagemContract {
     //Campos específicos da tabela Estado
     public static final class EntryEstado implements BaseColumns{
 
-        public static final Uri CONTENT_URI = Uri.withAppendedPath(BASE_CONTENT_URI, PATH_ESTADO);
+        public static final Uri CONTENT_URI_ESTADO = Uri.withAppendedPath(BASE_CONTENT_URI, PATH_ESTADO);
+        public static final Uri CONTENT_URI_ESTADOS = Uri.withAppendedPath(BASE_CONTENT_URI, PATH_ESTADOS);
 
         public final static String TABLE_NAME = "estado";
 

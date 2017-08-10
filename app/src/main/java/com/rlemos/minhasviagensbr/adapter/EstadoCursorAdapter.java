@@ -42,10 +42,16 @@ public class EstadoCursorAdapter extends CursorAdapter {
 
         String textEstado = cursor.getString(columEstado);
         String siglaEstado = cursor.getString(columSigla).toLowerCase();
-        int id = view.getResources().getIdentifier(siglaEstado, "drawable", view.getContext().getPackageName());
+        //int id = view.getResources().getIdentifier(siglaEstado, "drawable", view.getContext().getPackageName());
 
+
+        Resources res = view.getResources();
+        String mDrawableName = "bandeira_"+siglaEstado;
+        int resID = res.getIdentifier(mDrawableName , "drawable", view.getContext().getPackageName());
+        Drawable drawable = res.getDrawable(resID );
+
+        bandeiraEstado.setImageDrawable(drawable );
         estado.setText(textEstado);
-        bandeiraEstado.setImageResource(id);
 
 
     }

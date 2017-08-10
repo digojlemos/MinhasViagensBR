@@ -37,15 +37,15 @@ public class ViagemProvider extends ContentProvider {
 
     static {
 
-        sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_PAIS, PAISES);
+        sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_PAISES, PAISES);
 
         sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_PAIS + "/#", PAIS);
 
-        sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_ESTADO, ESTADOS);
+        sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_ESTADOS, ESTADOS);
 
         sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_ESTADO + "/#", ESTADO);
 
-        sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_CIDADE, CIDADES);
+        sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_CIDADES, CIDADES);
 
         sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_CIDADE + "/#", CIDADE);
     }

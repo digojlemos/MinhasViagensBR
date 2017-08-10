@@ -42,9 +42,9 @@ public class ViagemDbHelper extends SQLiteOpenHelper {
                 EntryEstado.ESTADO + " TEXT NOT NULL, " +
                 EntryEstado.ESTADO_SIGLA + " TEXT NOT NULL, " +
                 EntryEstado.ESTADO_ENABLED + " INTEGER DEFAULT 0, " +
-                EntryEstado.ESTADO_ENABLED + " TEXT, " +
+                EntryEstado.ESTADO_ULT_VIAGEM+ " TEXT, " +
                 EntryEstado.ID_PAIS + " INTEGER, " +
-                "FOREIGN KEY( " + EntryEstado.ID_PAIS + ") REFERENCES" + EntryPais.TABLE_NAME +
+                "FOREIGN KEY( " + EntryEstado.ID_PAIS + ") REFERENCES " + EntryPais.TABLE_NAME +
                 "( " + EntryEstado.ID_PAIS + " ));";
 
         String create_table_cidades = "CREATE TABLE " + EntryCidade.TABLE_NAME + " ( " +
@@ -68,7 +68,7 @@ public class ViagemDbHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY(" + EntryViagem.ID_CIDADE + ") REFERENCES " + EntryCidade.TABLE_NAME +
                 "(" + EntryViagem.ID_CIDADE + "));";
 
-        String insert_table_pais = "INSERT INTO"+ EntryPais.TABLE_NAME+"("+EntryPais.PAIS_SIGLA+","+
+        String insert_table_pais = "INSERT INTO "+ EntryPais.TABLE_NAME+"("+EntryPais.PAIS_SIGLA+","+
         EntryPais.PAIS_ABREV+","+EntryPais.PAIS+") VALUES " +
                 "('AF', 'AFG','Afeganistão')," +
                 "('ZA', 'ZAF','África do Sul')," +
