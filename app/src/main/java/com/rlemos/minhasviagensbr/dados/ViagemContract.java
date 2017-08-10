@@ -19,6 +19,7 @@ public class ViagemContract {
     public static final String PATH_PAISES = "paises";
     public static final String PATH_ESTADOS = "estados";
     public static final String PATH_CIDADES = "cidades";
+    public static final String PATH_ESTADOS_LIST = "estados_list";
 
 
     public static final class EntryPais implements BaseColumns{

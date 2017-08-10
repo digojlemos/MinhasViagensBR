@@ -23,8 +23,8 @@ import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryEstado;
 public class EstadoCursorAdapter extends CursorAdapter {
 
 
-    public EstadoCursorAdapter(Context context, Cursor c, int flags) {
-        super(context, c, flags);
+    public EstadoCursorAdapter(Context context, Cursor c) {
+        super(context, c, 0/*Flag*/);
     }
 
     @Override

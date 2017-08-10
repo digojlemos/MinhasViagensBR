@@ -1,18 +1,23 @@
 package com.rlemos.minhasviagensbr;
 
+import android.app.LoaderManager;
+import android.content.ContentUris;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Loader;
 
 import com.rlemos.minhasviagensbr.adapter.EstadoCursorAdapter;
 import com.rlemos.minhasviagensbr.dados.ViagemContract;
+import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryEstado;
 
 import static android.R.attr.id;
 import static android.os.Build.VERSION_CODES.M;
@@ -22,34 +27,54 @@ import static java.security.AccessController.getContext;
  * Created by rlemos on 07/08/17.
  */
 
-public class activity_estado extends AppCompatActivity {
+public class activity_estado extends AppCompatActivity implements
+        LoaderManager.LoaderCallbacks<Cursor> {
 
-        EstadoCursorAdapter cursorAdapter;
+    EstadoCursorAdapter cursorAdapter;
+    private static final int ESTADO_LOADER = 0;
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.layout_estado);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.layout_estado);
 
-            ListView listEstado = (ListView) findViewById(R.id.listEstado);
+        ListView listEstado = (ListView) findViewById(R.id.listEstado);
 
-            View empty = findViewById(R.id.imagePais);
-            listEstado.setEmptyView(empty);
+        View empty = findViewById(R.id.imagePais);
+        listEstado.setEmptyView(empty);
 
-            String[] projection = {
-                    ViagemContract.EntryEstado._ID,
-                    ViagemContract.EntryEstado.ESTADO,
-                    ViagemContract.EntryEstado.ESTADO_SIGLA};
-
-            Cursor c = getContentResolver().query(ViagemContract.EntryEstado.CONTENT_URI_ESTADOS,projection,null,null,null);
-
-
+        cursorAdapter = new EstadoCursorAdapter(this,null);
+        listEstado.setAdapter(cursorAdapter);
+        getLoaderManager().initLoader(ESTADO_LOADER, null, this);
+    }
 
 
+    @Override
+    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+        String[] projection = {
+                EntryEstado.ID_ESTADO,
+                EntryEstado.ESTADO,
+                EntryEstado.ESTADO_SIGLA };
+        String selection = EntryEstado.ESTADO_ENABLED + "=?";
+        String[] selectionArgs = new String[] { "0" };
 
+        // This loader will execute the ContentProvider's query method on a background thread
+        return new CursorLoader(this,   // Parent activity context
+                EntryEstado.CONTENT_URI_ESTADOS,   // Provider content URI to query
+                projection,             // Columns to include in the resulting Cursor
+                selection,                   // No selection clause
+                selectionArgs,                   // No selection arguments
+                null); // Default sort order
+    }
 
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        cursorAdapter.swapCursor(data);
+    }
 
-        }
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        cursorAdapter.swapCursor(null);
 
-
+    }
 }

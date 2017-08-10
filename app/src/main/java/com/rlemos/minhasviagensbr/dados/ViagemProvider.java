@@ -48,6 +48,7 @@ public class ViagemProvider extends ContentProvider {
         sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_CIDADES, CIDADES);
 
         sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_CIDADE + "/#", CIDADE);
+
     }
 
     private ViagemDbHelper dbHelper;
@@ -78,7 +79,7 @@ public class ViagemProvider extends ContentProvider {
                 break;
             case PAIS:
 
-                selection = EntryPais._ID + "=?";
+                selection = EntryPais.ID_PAIS + "=?";
                 selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
 
                 cursor = database.query(EntryPais.TABLE_NAME, projection, selection, selectionArgs,
@@ -91,7 +92,7 @@ public class ViagemProvider extends ContentProvider {
                 break;
             case ESTADO:
 
-                selection = EntryPais._ID + "=?";
+                selection = EntryEstado.ID_ESTADO + "=?";
                 selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
 
                 cursor = database.query(EntryEstado.TABLE_NAME, projection, selection, selectionArgs,
@@ -104,7 +105,7 @@ public class ViagemProvider extends ContentProvider {
                 break;
             case CIDADE:
 
-                selection = EntryPais._ID + "=?";
+                selection = EntryCidade.ID_CIDADE + "=?";
                 selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
 
                 cursor = database.query(EntryCidade.TABLE_NAME, projection, selection, selectionArgs,
