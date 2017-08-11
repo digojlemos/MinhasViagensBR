@@ -19,7 +19,6 @@ import android.widget.Toast;
 import android.content.Loader;
 
 import com.rlemos.minhasviagensbr.adapter.EstadoCursorAdapter;
-import com.rlemos.minhasviagensbr.dados.ViagemContract;
 import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryViagem;
 import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryEstado;
 
@@ -41,6 +40,7 @@ public class activity_estado extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_estado);
+        setTitle("Viagens - Estados");
 
         ListView listEstado = (ListView) findViewById(R.id.listEstado);
 
@@ -55,12 +55,11 @@ public class activity_estado extends AppCompatActivity implements
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 //Cria um novo Intent que será aberto quando clicado
                 Intent intent = new Intent(activity_estado.this, activity_viagens.class);
-                //
+                //Cria um URI com o ID do estado clicado
                 Uri currentPetUri = ContentUris.withAppendedId(EntryViagem.CONTENT_URI_VIAGENS, id);
-
+                //Inseri a URI no Intent
                 intent.setData(currentPetUri);
-
-
+                //Inicializa o Intent
                 startActivity(intent);
             }
         });

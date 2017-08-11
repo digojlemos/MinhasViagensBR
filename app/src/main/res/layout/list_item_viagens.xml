@@ -5,7 +5,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textCidade"
+        android:id="@+id/textLocal"
         android:textSize="30sp"
         android:paddingLeft="15dp"
         android:paddingTop="15dp"
@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/dtViagem"
         android:paddingLeft="20dp"
-        android:layout_below="@id/textCidade"
+        android:layout_below="@id/textLocal"
         android:fontFamily="casual"
         android:textColor="#000"
         />
