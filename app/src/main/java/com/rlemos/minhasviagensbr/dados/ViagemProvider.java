@@ -12,7 +12,6 @@ import android.support.annotation.Nullable;
 
 import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryPais;
 import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryEstado;
-import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryCidade;
 import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryViagem;
 
 /**
@@ -29,9 +28,9 @@ public class ViagemProvider extends ContentProvider {
 
     private static final int ESTADOS= 103;
 
-    private static final int CIDADE = 104;
+    private static final int VIAGEM = 104;
 
-    private static final int CIDADES = 105;
+    private static final int VIAGENS = 105;
 
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
@@ -45,9 +44,9 @@ public class ViagemProvider extends ContentProvider {
 
         sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_ESTADO + "/#", ESTADO);
 
-        sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_CIDADES, CIDADES);
+        sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_CIDADES, VIAGENS);
 
-        sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_CIDADE + "/#", CIDADE);
+        sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_CIDADE + "/#", VIAGEM);
 
     }
 
@@ -98,17 +97,17 @@ public class ViagemProvider extends ContentProvider {
                 cursor = database.query(EntryEstado.TABLE_NAME, projection, selection, selectionArgs,
                         null, null, sortOrder);
                 break;
-            case CIDADES:
+            case VIAGENS:
 
-                cursor = database.query(EntryCidade.TABLE_NAME, projection, selection, selectionArgs,
+                cursor = database.query(EntryViagem.TABLE_NAME, projection, selection, selectionArgs,
                         null, null, sortOrder);
                 break;
-            case CIDADE:
+            case VIAGEM:
 
-                selection = EntryCidade.ID_CIDADE + "=?";
+                selection = EntryViagem.ID_VIAGEM + "=?";
                 selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
 
-                cursor = database.query(EntryCidade.TABLE_NAME, projection, selection, selectionArgs,
+                cursor = database.query(EntryViagem.TABLE_NAME, projection, selection, selectionArgs,
                         null, null, sortOrder);
                 break;
             default:

@@ -54,7 +54,7 @@ public class activity_estado extends AppCompatActivity implements
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 //Cria um novo Intent que será aberto quando clicado
-                Intent intent = new Intent(activity_estado.this, activity_cidade.class);
+                Intent intent = new Intent(activity_estado.this, activity_viagens.class);
                 //
                 Uri currentPetUri = ContentUris.withAppendedId(EntryViagem.CONTENT_URI_VIAGENS, id);
 

@@ -65,24 +65,6 @@ public class ViagemContract {
 
     }
 
-    //Campos específicos da tabela Viagem
-    public static final class EntryCidade implements BaseColumns{
-
-        public static final Uri CONTENT_URI = Uri.withAppendedPath(BASE_CONTENT_URI, PATH_CIDADE);
-
-        public final static String TABLE_NAME = "cidade";
-
-        public final static String ID_CIDADE = BaseColumns._ID;
-
-        public final static String CIDADE = "cidade";
-
-        public final static String ID_ESTADO = "id_estado";
-
-        public final static String CIDADE_ENABLED = "cidade_enabled";
-
-        public final static String CIDADE_ULT_VIAGEM = "cidade_ult_viagem";
-
-    }
 
     //Campos específicos da tabela Viagem
     public static final class EntryViagem implements BaseColumns{
@@ -93,7 +75,7 @@ public class ViagemContract {
 
         public final static String ID_VIAGEM = BaseColumns._ID;
 
-        public final static String ID_CIDADE = "id_cidade";
+        public final static String ID_ESTADO = "id_cidade";
 
         public final static String VIAGEM_DATA = "viagem_data";
 

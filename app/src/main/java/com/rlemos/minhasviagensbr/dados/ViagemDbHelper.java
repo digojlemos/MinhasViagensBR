@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryPais;
 import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryEstado;
-import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryCidade;
 import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryViagem;
 
 /**
@@ -47,15 +46,6 @@ public class ViagemDbHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY( " + EntryEstado.ID_PAIS + ") REFERENCES " + EntryPais.TABLE_NAME +
                 "( " + EntryEstado.ID_PAIS + " ));";
 
-        String create_table_cidades = "CREATE TABLE " + EntryCidade.TABLE_NAME + " ( " +
-                EntryCidade.ID_CIDADE + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                EntryCidade.CIDADE + " TEXT NOT NULL, " +
-                EntryCidade.CIDADE_ENABLED + " INTEGER DEFAULT 0, " +
-                EntryCidade.CIDADE_ULT_VIAGEM + " TEXT, " +
-                EntryCidade.ID_ESTADO + " id_estado INTEGER, " +
-                "FOREIGN KEY(" + EntryCidade.ID_ESTADO + ") REFERENCES " + EntryEstado.TABLE_NAME +
-                "(" + EntryCidade.ID_ESTADO + "));";
-
         String create_table_viagens = "CREATE TABLE " + EntryViagem.TABLE_NAME + "( " +
                 EntryViagem.ID_VIAGEM + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 EntryViagem.VIAGEM_LOCAL + " TEXT, " +
@@ -64,9 +54,9 @@ public class ViagemDbHelper extends SQLiteOpenHelper {
                 EntryViagem.VIAGEM_HOSPEDAGEM + " TEXT, " +
                 EntryViagem.VIAGEM_PASSEIOS + " TEXT, " +
                 EntryViagem.VIAGEM_DESC + " TEXT, " +
-                EntryViagem.ID_CIDADE + " INTEGER, " +
-                "FOREIGN KEY(" + EntryViagem.ID_CIDADE + ") REFERENCES " + EntryCidade.TABLE_NAME +
-                "(" + EntryViagem.ID_CIDADE + "));";
+                EntryViagem.ID_ESTADO + " INTEGER, " +
+                "FOREIGN KEY(" + EntryViagem.ID_ESTADO + ") REFERENCES " + EntryEstado.TABLE_NAME +
+                "(" + EntryViagem.ID_ESTADO + "));";
 
         String insert_table_pais = "INSERT INTO "+ EntryPais.TABLE_NAME+"("+EntryPais.PAIS_SIGLA+","+
         EntryPais.PAIS_ABREV+","+EntryPais.PAIS+") VALUES " +
@@ -348,7 +338,6 @@ public class ViagemDbHelper extends SQLiteOpenHelper {
 
         db.execSQL(create_table_pais);
         db.execSQL(create_table_estados);
-        db.execSQL(create_table_cidades);
         db.execSQL(create_table_viagens);
         db.execSQL(insert_table_pais);
         db.execSQL(insert_table_estados);
