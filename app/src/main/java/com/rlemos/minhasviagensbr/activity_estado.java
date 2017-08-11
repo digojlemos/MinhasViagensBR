@@ -2,13 +2,16 @@ package com.rlemos.minhasviagensbr;
 
 import android.app.LoaderManager;
 import android.content.ContentUris;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,6 +20,7 @@ import android.content.Loader;
 
 import com.rlemos.minhasviagensbr.adapter.EstadoCursorAdapter;
 import com.rlemos.minhasviagensbr.dados.ViagemContract;
+import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryViagem;
 import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryEstado;
 
 import static android.R.attr.id;
@@ -45,7 +49,25 @@ public class activity_estado extends AppCompatActivity implements
 
         cursorAdapter = new EstadoCursorAdapter(this,null);
         listEstado.setAdapter(cursorAdapter);
+
+        listEstado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                //Cria um novo Intent que será aberto quando clicado
+                Intent intent = new Intent(activity_estado.this, activity_cidade.class);
+                //
+                Uri currentPetUri = ContentUris.withAppendedId(EntryViagem.CONTENT_URI_VIAGENS, id);
+
+                intent.setData(currentPetUri);
+
+
+                startActivity(intent);
+            }
+        });
+
         getLoaderManager().initLoader(ESTADO_LOADER, null, this);
+
+
     }
 
 
