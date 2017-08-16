@@ -3,28 +3,20 @@ package com.rlemos.minhasviagensbr;
 import android.app.LoaderManager;
 import android.content.ContentUris;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.content.Loader;
 
 import com.rlemos.minhasviagensbr.adapter.EstadoCursorAdapter;
 import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryViagem;
 import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryEstado;
-
-import static android.R.attr.id;
-import static android.os.Build.VERSION_CODES.M;
-import static java.security.AccessController.getContext;
 
 /**
  * Created by rlemos on 07/08/17.
@@ -57,10 +49,18 @@ public class activity_estado extends AppCompatActivity implements
                 Intent intent = new Intent(activity_estado.this, activity_viagens.class);
                 //Cria um URI com o ID do estado clicado
                 Uri currentPetUri = ContentUris.withAppendedId(EntryViagem.CONTENT_URI_LISTVIAGENS, id);
+
+
+                TextView estado = (TextView) view.findViewById(R.id.textoEstados);
+
+                intent.putExtra("estado",estado.getText());
+
                 //Inseri a URI no Intent
                 intent.setData(currentPetUri);
+
                 //Inicializa o Intent
                 startActivity(intent);
+
             }
         });
 
@@ -77,7 +77,7 @@ public class activity_estado extends AppCompatActivity implements
                 EntryEstado.ESTADO,
                 EntryEstado.ESTADO_SIGLA };
         String selection = EntryEstado.ESTADO_ENABLED + "=?";
-        String[] selectionArgs = new String[] { "0" };
+        String[] selectionArgs = new String[] { "1" };
         String order = EntryEstado.ESTADO_ULT_VIAGEM+" DESC";
 
         // This loader will execute the ContentProvider's query method on a background thread

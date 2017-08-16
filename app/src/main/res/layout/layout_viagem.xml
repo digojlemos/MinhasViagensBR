@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+<RelativeLayout
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViagem"
+        android:textSize="30sp"
+        android:paddingLeft="15dp"
+        android:paddingTop="15dp"
+        android:fontFamily="casual"
+        android:textColor="#000"
+        android:text="Arraial do Cabo"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dataViagem"
+        android:paddingLeft="20dp"
+        android:layout_below="@id/textViagem"
+        android:fontFamily="casual"
+        android:textColor="#000"
+        android:text="20/05/2017"
+        android:textSize="20sp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/qtdDiasViagem"
+        android:paddingLeft="20dp"
+        android:layout_below="@id/textViagem"
+        android:layout_toRightOf="@id/dataViagem"
+        android:fontFamily="casual"
+        android:textColor="#000"
+        android:text="8 dias"
+        android:textAlignment="viewEnd"
+        android:paddingRight="20dp"
+        android:textSize="20sp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/labelHospedagem"
+        android:paddingLeft="20dp"
+        android:layout_below="@id/dataViagem"
+        android:fontFamily="casual"
+        android:textColor="#000"
+        android:text="Hospedagem:"
+        android:paddingTop="10dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/localHospViagem"
+        android:paddingLeft="20dp"
+        android:layout_below="@id/labelHospedagem"
+        android:fontFamily="casual"
+        android:textColor="#000"
+        android:text="Pousada Suiá"
+        android:textSize="20sp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/labelPasseios"
+        android:paddingLeft="20dp"
+        android:layout_below="@id/localHospViagem"
+        android:fontFamily="casual"
+        android:textColor="#000"
+        android:text="Passeios:"
+        android:paddingTop="10dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/passeiosViagem"
+        android:paddingLeft="20dp"
+        android:layout_below="@id/labelPasseios"
+        android:fontFamily="casual"
+        android:textColor="#000"
+        android:text="Praia do forno, Ilha do Farol, Praia Grande, Pontal do Atalaia e Prainhas"
+        android:textSize="20sp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/labelDescricao"
+        android:paddingLeft="20dp"
+        android:layout_below="@id/passeiosViagem"
+        android:fontFamily="casual"
+        android:textColor="#000"
+        android:text="Descrição:"
+        android:paddingTop="10dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/descViagem"
+        android:paddingLeft="20dp"
+        android:layout_below="@id/labelDescricao"
+        android:fontFamily="casual"
+        android:textColor="#000"
+        android:text="Hospedagem próximo ao centro da cidade, estando próximo de pizzaria e restaurantes, ao lado de operadoras de mergulho, passeio de barco feito com o pessoal da pousada no barco Holândes Voador, Feito duas imerssões de mergulho com a escola ao lado da pousada, no dia feito duas imersões na praia do anequim, por do sol na Praia Grande lindíssimo, da próximavísita conhecer o Pontoal do Atalaia e observar o por sol no mesmo."
+        android:textSize="20sp"
+        />
+
+
+</RelativeLayout>  </ScrollView>

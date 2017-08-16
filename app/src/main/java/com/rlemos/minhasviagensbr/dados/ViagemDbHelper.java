@@ -342,12 +342,17 @@ public class ViagemDbHelper extends SQLiteOpenHelper {
                 "('20170709', 'Campos do Jordão', 26)," +
                 "('20170107', 'Cabo Frio', 19);" ;
 
+        String update_tabela_estados_1 = "UPDATE estados set estado_enabled=1,estado_ult_viagem='20170110' WHERE id_estado=19";
+        String update_tabela_estados_2 = "UPDATE estados set estado_enabled=1,estado_ult_viagem='20170709' WHERE id_estado=26";
+
         db.execSQL(create_table_pais);
         db.execSQL(create_table_estados);
         db.execSQL(create_table_viagens);
         db.execSQL(insert_table_pais);
         db.execSQL(insert_table_estados);
         db.execSQL(insert_table_viagem);
+        db.execSQL(update_tabela_estados_1);
+        db.execSQL(update_tabela_estados_2);
 
     }
 

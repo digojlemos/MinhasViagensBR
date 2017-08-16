@@ -31,8 +31,8 @@ public class ViagensCursorAdapter extends CursorAdapter {
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        TextView local = (TextView) view.findViewById(R.id.textLocal);
-        TextView dtViagem = (TextView) view.findViewById(R.id.dtViagem);
+        TextView local = (TextView) view.findViewById(R.id.textLocalViagens);
+        TextView dtViagem = (TextView) view.findViewById(R.id.dtViagens);
 
         int columLocal = cursor.getColumnIndex(EntryViagem.VIAGEM_LOCAL);
         int columDtViagem =  cursor.getColumnIndex(EntryViagem.VIAGEM_DATA);
