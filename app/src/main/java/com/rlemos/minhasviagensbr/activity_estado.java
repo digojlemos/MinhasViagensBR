@@ -56,7 +56,7 @@ public class activity_estado extends AppCompatActivity implements
                 //Cria um novo Intent que será aberto quando clicado
                 Intent intent = new Intent(activity_estado.this, activity_viagens.class);
                 //Cria um URI com o ID do estado clicado
-                Uri currentPetUri = ContentUris.withAppendedId(EntryViagem.CONTENT_URI_VIAGENS, id);
+                Uri currentPetUri = ContentUris.withAppendedId(EntryViagem.CONTENT_URI_LISTVIAGENS, id);
                 //Inseri a URI no Intent
                 intent.setData(currentPetUri);
                 //Inicializa o Intent

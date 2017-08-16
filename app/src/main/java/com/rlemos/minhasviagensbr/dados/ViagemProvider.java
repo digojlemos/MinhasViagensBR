@@ -32,6 +32,8 @@ public class ViagemProvider extends ContentProvider {
 
     private static final int VIAGENS = 105;
 
+    private static final int VIAGENS_LIST = 106;
+
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
     static {
@@ -44,9 +46,11 @@ public class ViagemProvider extends ContentProvider {
 
         sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_ESTADO + "/#", ESTADO);
 
-        sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_CIDADES, VIAGENS);
+        sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_VIAGENS, VIAGENS);
 
-        sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_CIDADE + "/#", VIAGEM);
+        sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_LIST_VIAGENS + "#", VIAGENS_LIST);
+
+        sUriMatcher.addURI(ViagemContract.CONTENT_AUTHORITY, ViagemContract.PATH_VIAGEM + "/#", VIAGEM);
 
     }
 
@@ -106,6 +110,14 @@ public class ViagemProvider extends ContentProvider {
 
                 selection = EntryViagem.ID_VIAGEM + "=?";
                 selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
+
+                cursor = database.query(EntryViagem.TABLE_NAME, projection, selection, selectionArgs,
+                        null, null, sortOrder);
+                break;
+            case VIAGENS_LIST:
+
+                selection = EntryViagem.ID_ESTADO + "=?";
+                selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri))};
 
                 cursor = database.query(EntryViagem.TABLE_NAME, projection, selection, selectionArgs,
                         null, null, sortOrder);

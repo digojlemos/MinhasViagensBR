@@ -18,8 +18,9 @@ import java.util.zip.Inflater;
  * Created by rjlemos on 11/08/2017.
  */
 
-public class ViagemCursorAdapter extends CursorAdapter {
-    public ViagemCursorAdapter(Context context, Cursor c) {
+public class ViagensCursorAdapter extends CursorAdapter {
+
+    public ViagensCursorAdapter(Context context, Cursor c) {
         super(context, c, 0);
     }
 

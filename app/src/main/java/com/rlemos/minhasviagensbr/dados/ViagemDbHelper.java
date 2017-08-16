@@ -336,11 +336,18 @@ public class ViagemDbHelper extends SQLiteOpenHelper {
                 "('Tocantins', 'TO', 33);";
 
 
+        String insert_table_viagem = "INSERT INTO "+ EntryViagem.TABLE_NAME+" ("+EntryViagem.VIAGEM_DATA+ ","+
+                EntryViagem.VIAGEM_LOCAL+","+EntryViagem.ID_ESTADO+") VALUES " +
+                "('20170110', 'Arraial do Cabo', 19)," +
+                "('20170709', 'Campos do Jordão', 26)," +
+                "('20170107', 'Cabo Frio', 19);" ;
+
         db.execSQL(create_table_pais);
         db.execSQL(create_table_estados);
         db.execSQL(create_table_viagens);
         db.execSQL(insert_table_pais);
         db.execSQL(insert_table_estados);
+        db.execSQL(insert_table_viagem);
 
     }
 

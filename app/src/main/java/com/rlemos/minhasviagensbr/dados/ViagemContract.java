@@ -15,12 +15,11 @@ public class ViagemContract {
 
     public static final String PATH_PAIS = "pais";
     public static final String PATH_ESTADO = "estado";
-    public static final String PATH_CIDADE = "cidade";
     public static final String PATH_PAISES = "paises";
     public static final String PATH_ESTADOS = "estados";
-    public static final String PATH_CIDADES = "cidades";
     public static final String PATH_VIAGEM = "viagem";
     public static final String PATH_VIAGENS = "viagens";
+    public static final String PATH_LIST_VIAGENS = "listviagens";
 
 
     public static final class EntryPais implements BaseColumns{
@@ -68,6 +67,7 @@ public class ViagemContract {
 
     //Campos específicos da tabela Viagem
     public static final class EntryViagem implements BaseColumns{
+        public static final Uri CONTENT_URI_LISTVIAGENS = Uri.withAppendedPath(BASE_CONTENT_URI, PATH_LIST_VIAGENS);
         public static final Uri CONTENT_URI_VIAGENS = Uri.withAppendedPath(BASE_CONTENT_URI, PATH_VIAGENS);
         public static final Uri CONTENT_URI_VIAGEM = Uri.withAppendedPath(BASE_CONTENT_URI, PATH_VIAGEM);
 
