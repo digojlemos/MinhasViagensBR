@@ -22,6 +22,9 @@
         <activity android:name=".activity_viagens">
 
         </activity>
+        <activity android:name=".activity_edit_viagem">
+
+        </activity>
         <provider
             android:authorities="com.rlemos.minhasviagensbr.viagemProvider"
             android:name=".dados.ViagemProvider"
