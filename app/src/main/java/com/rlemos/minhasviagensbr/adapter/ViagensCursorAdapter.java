@@ -38,10 +38,22 @@ public class ViagensCursorAdapter extends CursorAdapter {
         int columDtViagem =  cursor.getColumnIndex(EntryViagem.VIAGEM_DATA);
 
         String resultLocal = cursor.getString(columLocal);
-        String resultDtViagem = cursor.getString(columDtViagem);
+        String resultDtViagem = formataData(cursor.getString(columDtViagem));
 
         local.setText(resultLocal);
         dtViagem.setText(resultDtViagem);
 
+    }
+    public String formataData(String data){
+        if(data==null || data.isEmpty() || data.equals("")){
+            return null;
+        }
+        String mes, dia, ano, dataFormated;
+        ano = data.substring(0,4);
+        mes = data.substring(4,6);
+        dia = data.substring(6,8);
+        dataFormated = dia+"/"+mes+"/"+ano;
+
+        return dataFormated;
     }
 }

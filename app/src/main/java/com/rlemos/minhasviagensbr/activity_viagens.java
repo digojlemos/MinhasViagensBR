@@ -96,4 +96,6 @@ public class activity_viagens extends AppCompatActivity  implements
     public void onLoaderReset(Loader<Cursor> loader) {
         viagensAdapter.swapCursor(null);
     }
+
+
 }

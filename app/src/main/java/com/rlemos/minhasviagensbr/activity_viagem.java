@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Loader;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.TextView;
 
 import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryViagem;
@@ -109,28 +111,28 @@ public class activity_viagem extends AppCompatActivity implements
             if(dias!=null){
                 textviewDias.setText(dias);
             }else{
-                textviewDias.setEnabled(false);
+                textviewDias.setVisibility(View.INVISIBLE);
             }
 
             if(hospedagem!=null){
                 textviewHosp.setText(hospedagem);
-            }else{
-                textviewHosp.setEnabled(false);
-                textviewLabelPass.setEnabled(false);
+            }else {
+                textviewLabelHosp.setVisibility(View.INVISIBLE);
+                textviewHosp.setVisibility(View.INVISIBLE);
             }
 
             if(passeios!=null){
                 textviewPasseios.setText(passeios);
             }else {
-                textviewPasseios.setEnabled(false);
-                textviewLabelPass.setEnabled(false);
+                textviewPasseios.setVisibility(View.INVISIBLE);
+                textviewLabelPass.setVisibility(View.INVISIBLE);
             }
 
             if(desc!=null){
                 textviewDesc.setText(desc);
             }else{
-                textviewDesc.setEnabled(false);
-                textviewLabelDesc.setEnabled(false);
+                textviewDesc.setVisibility(View.INVISIBLE);
+                textviewLabelDesc.setVisibility(View.INVISIBLE);
             }
 
         }
@@ -142,9 +144,10 @@ public class activity_viagem extends AppCompatActivity implements
         }
         String mes, dia, ano, dataFormated;
         ano = data.substring(0,4);
-        mes = data.substring(4,2);
-        dia = data.substring(6,2);
+        mes = data.substring(4,6);
+        dia = data.substring(6,8);
         dataFormated = dia+"/"+mes+"/"+ano;
+
         return dataFormated;
     }
     public String addDias(String dias){
