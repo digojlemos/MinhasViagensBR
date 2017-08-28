@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.content.Loader;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryViagem;
@@ -34,7 +35,13 @@ public class activity_viagem extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_viagem);
-        setTitle("Viagem");
+        //setTitle("Viagem");
+
+        //deixar o aplicativo em FullScreen ocupando toda a tela
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //Esconde a Tool Bar
+        getSupportActionBar().hide();
 
         Intent intent = getIntent();
         mCurrentViagemUri = intent.getData();

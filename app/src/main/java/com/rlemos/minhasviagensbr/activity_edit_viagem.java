@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v7.app.AppCompatActivity;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -23,6 +24,12 @@ public class activity_edit_viagem extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_edit_viagem);
+
+        //deixar o aplicativo em FullScreen ocupando toda a tela
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //Esconde a Tool Bar
+        getSupportActionBar().hide();
 
         estadoSpinner = (Spinner) findViewById(R.id.estadoSpinner);
         carregarSpinner();
