@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -32,7 +33,14 @@ public class activity_estado extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_estado);
+        //Defini o titulo na toolBar
         setTitle("Viagens - Estados");
+
+        //deixar o aplicativo em FullScreen ocupando toda a tela
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //Esconde a Tool Bar
+        getSupportActionBar().hide();
 
         ListView listEstado = (ListView) findViewById(R.id.listEstado);
 
@@ -63,7 +71,7 @@ public class activity_estado extends AppCompatActivity implements
 
             }
         });
-
+        //Inicia o Loader
         getLoaderManager().initLoader(ESTADO_LOADER, null, this);
 
 
@@ -72,15 +80,19 @@ public class activity_estado extends AppCompatActivity implements
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+        //Cria a Varial que contem os dados que será retorbadi da consulta ao banco
         String[] projection = {
                 EntryEstado.ID_ESTADO,
                 EntryEstado.ESTADO,
                 EntryEstado.ESTADO_SIGLA };
+        //Variavel com o argumento que será pesquisado no banco
         String selection = EntryEstado.ESTADO_ENABLED + "=?";
+        //Defini o valor do argumento que será retornado
         String[] selectionArgs = new String[] { "1" };
+        //Defini a ordenação da consulta que será retornada
         String order = EntryEstado.ESTADO_ULT_VIAGEM+" DESC";
 
-        // This loader will execute the ContentProvider's query method on a background thread
+        //Retorna o Cursor ao Loader para carregar na Tela
         return new CursorLoader(this,   // Parent activity context
                 EntryEstado.CONTENT_URI_ESTADOS,   // Provider content URI to query
                 projection,             // Columns to include in the resulting Cursor
