@@ -40,16 +40,6 @@
 
         </android.support.v7.widget.CardView>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/labelEditLocal"
-            android:paddingLeft="15dp"
-            android:fontFamily="casual"
-            android:textColor="#000"
-            android:text="Local:"
-            android:layout_above="@+id/labelEditDataViagem"
-            android:layout_alignParentStart="true" />
 
         <EditText
             android:layout_width="match_parent"
@@ -59,34 +49,23 @@
             android:paddingLeft="15dp"
             android:fontFamily="casual"
             android:textColor="#000"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
             android:layout_below="@+id/cardView"
-            android:layout_toRightOf="@id/labelEditLocal"
-            android:hint="Local"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/labelEditDataViagem"
-            android:paddingLeft="15dp"
-            android:layout_below="@id/textEditViagem"
-            android:fontFamily="casual"
-            android:textColor="#000"
-            android:text="Data:"
-            android:paddingTop="22dp"
-            />
+            android:hint="Local"
+            style="@style/paddingEditCampos"/>
+
         <EditText
+            android:id="@+id/dataEditViagem"
             android:layout_width="110dp"
             android:layout_height="50dp"
-            android:id="@+id/dataEditViagem"
-            android:paddingLeft="10dp"
             android:layout_below="@id/textEditViagem"
+            android:ems="10"
             android:fontFamily="casual"
+            android:hint="01/01/2001"
+            android:inputType="datetime"
+            android:paddingLeft="10dp"
             android:textColor="#000"
-            android:layout_toRightOf="@id/labelEditDataViagem"
-            tools:text="25/08/2017"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
+            style="@style/paddingEditCampos"
+            android:maxLength="10"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -97,7 +76,7 @@
             android:layout_toRightOf="@id/dataEditViagem"
             android:layout_below="@id/textEditViagem"
             android:paddingTop="22dp"
-            android:paddingLeft="10dp"
+            android:paddingLeft="8dp"
             android:text="Estado:"/>
         <Spinner
             android:id="@+id/estadoSpinner"
@@ -107,7 +86,7 @@
             android:layout_toRightOf="@+id/labelEstado"
             android:fontFamily="casual"
             android:textColor="#000"
-            android:paddingTop="22dp"/>
+            android:layout_marginTop="12dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -140,57 +119,30 @@
             android:paddingLeft="10dp"
             android:id="@+id/qtdEditDiasViagem"
             />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/labelEditHospedagem"
-            android:paddingLeft="15dp"
-            android:layout_below="@id/labelEditDiasViagem"
-            android:fontFamily="casual"
-            android:textColor="#000"
-            android:text="Hospedagem:"
-            android:paddingTop="22dp"
-            />
+
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/localEditHospViagem"
-            android:paddingLeft="20dp"
-            android:layout_below="@id/labelEditDiasViagem"
-            android:layout_toRightOf="@id/labelEditHospedagem"
-            android:fontFamily="casual"
-            android:textColor="#000"
-            tools:text="Pousada Suiá"
-            android:textSize="20sp"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/labelEditPasseios"
-            android:paddingLeft="20dp"
-            android:layout_below="@id/localEditHospViagem"
-            android:fontFamily="casual"
-            android:textColor="#000"
-            android:text="Passeios:"
-            android:paddingTop="22dp"
-            />
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/passeiosEditViagem"
-            android:paddingLeft="20dp"
-            android:layout_toRightOf="@id/labelEditPasseios"
-            android:layout_below="@id/localEditHospViagem"
+            android:layout_below="@id/labelEditDiasViagem"
             android:fontFamily="casual"
+            android:hint="Hospedagem"
             android:textColor="#000"
-            tools:text="Praia do forno, Ilha do Farol, Praia Grande, Pontal do Atalaia e Prainhas"
             android:textSize="20sp"
+            style="@style/paddingEditCampos"/>
+
+        <EditText
+            android:id="@+id/passeiosEditViagem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/localEditHospViagem"
+            android:fontFamily="casual"
+            android:hint="Passeios"
             android:nestedScrollingEnabled="true"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
-            />
+            android:textColor="#000"
+            android:textSize="20sp"
+            tools:text=""
+            style="@style/paddingEditCampos"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -207,15 +159,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/descEditViagem"
-            android:paddingLeft="20dp"
             android:layout_below="@id/labelEditDescricao"
             android:fontFamily="casual"
             android:textColor="#000"
-            tools:text="Hospedagem próximo ao centro da cidade, estando próximo de pizzaria e restaurantes, ao lado de operadoras de mergulho, passeio de barco feito com o pessoal da pousada no barco Holândes Voador, Feito duas imerssões de mergulho com a escola ao lado da pousada, no dia feito duas imersões na praia do anequim, por do sol na Praia Grande lindíssimo, da próximavísita conhecer o Pontoal do Atalaia e observar o por sol no mesmo."
+            tools:text=""
             android:textSize="20sp"
-            android:nestedScrollingEnabled="true"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
+            style="@style/paddingEditCampos"
+            android:inputType="textMultiLine"
+            android:ems="10"
             />
-
     </RelativeLayout>  </ScrollView>

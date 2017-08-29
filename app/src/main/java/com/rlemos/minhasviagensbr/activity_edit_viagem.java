@@ -5,9 +5,12 @@ import android.os.Bundle;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -23,7 +26,7 @@ import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryEstado;
 public class activity_edit_viagem extends AppCompatActivity {
     Spinner estadoSpinner;
     SeekBar diasSeekBar;
-    TextView qtdDias;
+    TextView qtdDias, data;
     CardView cardView;
     ImageView buttonBack;
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,29 @@ public class activity_edit_viagem extends AppCompatActivity {
             public void onClick(View view) {
                 //finish();
                 onBackPressed();
+            }
+        });
+        data = (EditText) findViewById(R.id.dataEditViagem);
+        data.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(editable.length()==2){
+                    data.setText(data.getText()+"/");
+                }
+                if(editable.length()==5){
+                    data.setText(data.getText()+"/");
+                }
+
             }
         });
 
