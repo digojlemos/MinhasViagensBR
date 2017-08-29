@@ -8,16 +8,21 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.content.CursorLoader;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.content.Loader;
+import android.widget.TextView;
 
 import com.rlemos.minhasviagensbr.adapter.ViagensCursorAdapter;
 import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryViagem;
 
 import static com.rlemos.minhasviagensbr.R.id.listEstado;
+import static com.rlemos.minhasviagensbr.R.id.listViagens;
 
 /**
  * Created by rjlemos on 11/08/2017.
@@ -37,13 +42,26 @@ public class activity_viagens extends AppCompatActivity  implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_viagens);
 
+        //deixar o aplicativo em FullScreen ocupando toda a tela
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //Esconde a Tool Bar
+        getSupportActionBar().hide();
 
         Intent intent = getIntent();
         mCurrentPetUri = intent.getData();
 
         String estado = intent.getStringExtra("estado");
-        setTitle("Viagens para "+estado);
+        TextView tituloViagens = (TextView) findViewById(R.id.tituloViagens);
+        tituloViagens.setText("Viagens - "+estado);
 
+        ImageView buttonBack = (ImageView) findViewById(R.id.backButtonViagens);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
 
         ListView listViagens = (ListView) findViewById(R.id.listViagens);
@@ -60,6 +78,15 @@ public class activity_viagens extends AppCompatActivity  implements
                 intent.setData(currentPetUri);
                 //Inicializa o Intent
                 startActivity(intent);
+            }
+        });
+
+        FloatingActionButton buttonAdd = (FloatingActionButton) findViewById(R.id.buttonAddViagens);
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent addIntent = new Intent(activity_viagens.this,  activity_edit_viagem.class);
+                startActivity(addIntent);
             }
         });
 

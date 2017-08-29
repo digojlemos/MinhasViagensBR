@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.content.CursorLoader;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
@@ -44,17 +45,26 @@ public class activity_estado extends AppCompatActivity implements
 
         ListView listEstado = (ListView) findViewById(R.id.listEstado);
 
-        View empty = findViewById(R.id.imagePais);
+        View empty = findViewById(R.id.empty);
         listEstado.setEmptyView(empty);
 
         cursorAdapter = new EstadoCursorAdapter(this,null);
         listEstado.setAdapter(cursorAdapter);
 
+        FloatingActionButton buttonAdd = (FloatingActionButton) findViewById(R.id.buttonAddEstado);
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent addIntent = new Intent(activity_estado.this,  activity_edit_viagem.class);
+                startActivity(addIntent);
+            }
+        });
+
         listEstado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 //Cria um novo Intent que será aberto quando clicado
-                Intent intent = new Intent(activity_estado.this, activity_edit_viagem.class);
+                Intent intent = new Intent(activity_estado.this, activity_viagens.class);
                 //Cria um URI com o ID do estado clicado
                 Uri currentPetUri = ContentUris.withAppendedId(EntryViagem.CONTENT_URI_LISTVIAGENS, id);
 

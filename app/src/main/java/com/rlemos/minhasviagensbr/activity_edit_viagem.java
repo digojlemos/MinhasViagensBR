@@ -4,8 +4,11 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -21,6 +24,8 @@ public class activity_edit_viagem extends AppCompatActivity {
     Spinner estadoSpinner;
     SeekBar diasSeekBar;
     TextView qtdDias;
+    CardView cardView;
+    ImageView buttonBack;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_edit_viagem);
@@ -56,6 +61,16 @@ public class activity_edit_viagem extends AppCompatActivity {
                 qtdDias.setText(String.valueOf(progress));
             }
         });
+        buttonBack = (ImageView) findViewById(R.id.backButtonEdit);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //finish();
+                onBackPressed();
+            }
+        });
+
+
 
     }
 

@@ -4,6 +4,7 @@ import android.app.LoaderManager;
 import android.content.ContentUris;
 import android.content.Intent;
 import android.database.Cursor;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.content.CursorLoader;
@@ -12,6 +13,7 @@ import android.content.Loader;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.rlemos.minhasviagensbr.dados.ViagemContract.EntryViagem;
@@ -29,6 +31,8 @@ public class activity_viagem extends AppCompatActivity implements
 
     private TextView textviewLocal, textviewData, textviewDias, textviewHosp, textviewPasseios,
             textviewDesc,textviewLabelDesc, textviewLabelHosp, textviewLabelPass;
+
+    private ImageView buttonBack;
 
     private static final int VIAGEM_LOADER = 0;
 
@@ -55,6 +59,17 @@ public class activity_viagem extends AppCompatActivity implements
         textviewLabelDesc = (TextView) findViewById(R.id.labelDescricao);
         textviewLabelHosp = (TextView) findViewById(R.id.labelHospedagem);
         textviewLabelPass = (TextView) findViewById(R.id.labelPasseios);
+
+        buttonBack = (ImageView) findViewById(R.id.backButtonViagem);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+
+
 
 
 
